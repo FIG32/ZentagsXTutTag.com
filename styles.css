@@ -1,0 +1,119 @@
+/* Reset and basic styling */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: Courier New, monospace;
+}
+
+/* Background animation */
+.background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgb(175, 0, 0), rgb(0, 0, 0));
+    animation: moveBackground 10s linear infinite;
+    z-index: -1;
+}
+
+@keyframes moveBackground {
+    0% { background-position: 0 0; }
+    100% { background-position: 100% 100%; }
+}
+
+/* Content area */
+.content {
+    position: relative;
+    text-align: center;
+    padding: 20px;
+    color: rgb(0, 0, 0);
+    animation: fadeIn 2s ease-in-out, slideIn 2s ease-in-out;
+    transition: transform 0.6s ease-out; /* Optional: add smooth transition */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-20px); }
+    to { transform: translateY(0); }
+}
+
+/* Navigation styles */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline; /* Corrected to 'underline' for hover effect */
+}
+
+/* Rain effect */
+.rain-container {
+    position: absolute;
+    top: 30;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Ignore mouse events on raindrops */
+    z-index: -1; /* Ensure rain is behind content */
+}
+
+.rain {
+    position: fixed;
+    width: 2px; /* Increase width for more visible raindrops */
+    height: 15px; /* Adjust height for longer raindrops */
+    background-color: rgba(118, 118, 199, 0.8); /* Adjust color and opacity */
+    animation: fall 1s linear infinite; /* Animation properties */
+    filter: blur(0.32px); /* Add slight blur for realism */
+    transform: translateY(-50px); /* Start raindrops above viewport */
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-50px) translateX(0); /* Initial position */
+        opacity: 0; /* Start with opacity 0 */
+    }
+    50% {
+        opacity: 1; /* Fade in halfway through animation */
+    }
+    100% {
+        transform: translateY(100vh) translateX(20px); /* End position */
+        opacity: 0; /* Fade out at the end */
+    }
+}
+
+/* Ripple effect */
+.ripple {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgb(255, 255, 255); /* Adjust color and opacity */
+    transform: scale(2); /* Start with zero scale */
+    animation: rippleEffect 1.0 ease-out;
+    pointer-events: none; /* Ignore mouse events on ripples */
+}
+
+@keyframes rippleEffect {
+    to {
+        transform: scale(2); /* Scale ripple to create effect */
+        opacity: 0; /* Fade out ripple */
+    }
+}
